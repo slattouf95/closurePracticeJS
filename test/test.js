@@ -64,6 +64,12 @@ describe('Closures', function() {
       expect(testCalculator()).to.be.a('number');
     });
 
+    it('should set stored value to 0 if no initialValue is passed in', function() {
+      var testCalculator = sumCalculator();
+
+      expect(testCalculator()).to.equal(0);
+    });
+
     it('should account for the initialValue passed in', function() {
       var testCalculator = sumCalculator(10);
 
@@ -71,11 +77,6 @@ describe('Closures', function() {
       expect(testCalculator(5)).to.equal(15);
     });
 
-    it('should set stored value to 0 if no initialValue is passed in', function() {
-      var testCalculator = sumCalculator();
-
-      expect(testCalculator()).to.equal(0);
-    });
 
     it('should account for varying number of arguments', function() {
       var firstTestCalculator = sumCalculator(27);
@@ -135,12 +136,14 @@ describe('Closures', function() {
       coinTally.makeCoinFlip();
       count++;
 
+      coinTally.checkTally(); // called just so you can console log in your code
       expect(tally.heads + tally.tails).to.equal(count);
 
       coinTally.makeCoinFlip();
       coinTally.makeCoinFlip();
       count += 2;
 
+      coinTally.checkTally(); // called just so you can console log in your code
       expect(tally.heads + tally.tails).to.equal(count);
     });
   });
