@@ -9,11 +9,7 @@
 // holaGreeting('Shi-Hao'); // 'Hola, Shi-Hao'
 
 var greetingFactory = function(greeting) {
-
-  /* SOLUTION */
-  return function(name) {
-    return greeting + ', ' + name;
-  }
+  // INSERT CODE HERE
 }
 
 // sumCalculator takes in an initial number that is stored and returns a function
@@ -31,19 +27,7 @@ var greetingFactory = function(greeting) {
 // calculatorTwo() // 10
 
 var sumCalculator = function(initialValue) {
-
-  /* SOLUTION */ 
-  var sum = initialValue || 0;
-
-  return function() {
-    var args = Array.from(arguments);
-
-    sum = args.reduce(function(accumulator, currentVal) {
-      return accumulator + currentVal;
-    }, sum);
-
-    return sum;
-  }
+  // INSERT CODE HERE
 }
 
 // coinFlipTally should generate a storage object, take no arguments, and 
@@ -73,30 +57,8 @@ var sumCalculator = function(initialValue) {
 // gameTally.checkTally(); // should have updated count with heads added or tails added
 
 var coinFlipTally = function() {
+  // INSERT CODE HERE
 
-  /* SOLUTION */
-  var tally = {
-    heads: 0,
-    tails: 0
-  };
-
-  var coinFlipMethods = {
-    makeCoinFlip: function() {
-      if (Math.random() < 0.50) {
-        tally.heads++;
-        return 'heads';
-      } else {
-        tally.tails++;
-        return 'tails';
-      }
-    },
-
-    checkTally: function() {
-      return tally;
-    }
-  };
-
-  return coinFlipMethods;
 }
 
 module.exports = {
