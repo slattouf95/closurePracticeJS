@@ -1,6 +1,6 @@
 var assert = require('assert');
 var { expect } = require('chai');
-var { greetingFactory, sumCalculator, fastFoodRegisterFactory } = require('../src/closureFunctions.js');
+var { greetingFactory, sumCalculator, coinFlipTally } = require('../src/closureFunctions.js');
 
 describe('Closures', function() {
   describe('#greetingFactory()', function() {
@@ -88,5 +88,60 @@ describe('Closures', function() {
     });
   });
 
-  describe('#')
+  describe('#coinFlipTally()', function() {
+    it('should return an object', function() {
+      var coinTally = coinFlipTally();
+      expect(coinTally).to.be.a('object');
+    });
+
+    it('should return an object that contains two properties', function() {
+      var coinTally = coinFlipTally();
+
+      var properties = Object.keys(coinTally);
+
+      expect(properties).to.have.lengthOf(2);
+    })
+
+    it('should return an object with the makeCoinFlip and checkTally methods', function() {
+      var coinTally = coinFlipTally();
+
+      expect(coinTally).to.have.property('makeCoinFlip');
+      expect(coinTally).to.have.property('checkTally');
+    });
+
+    it('should return a string for makeCoinFlip() calls', function() {
+      var coinTally = coinFlipTally();
+      
+      var resultingFlip = coinTally.makeCoinFlip();
+
+      var flipIsHeadsOrTails = (resultingFlip === 'heads') || (resultingFlip === 'tails');
+
+      expect(flipIsHeadsOrTails).to.equal(true);
+    });
+
+    it('should return an object when checkTally is called', function() {
+      var coinTally = coinFlipTally();
+
+      var tally = coinTally.checkTally();
+
+      expect(tally).to.be.an('object');
+    });
+
+    it('increase the tally count for each coin flip', function() {
+      var coinTally = coinFlipTally();
+      var tally = coinTally.checkTally();
+      var count = 0;
+
+      coinTally.makeCoinFlip();
+      count++;
+
+      expect(tally.heads + tally.tails).to.equal(count);
+
+      coinTally.makeCoinFlip();
+      coinTally.makeCoinFlip();
+      count += 2;
+
+      expect(tally.heads + tally.tails).to.equal(count);
+    });
+  });
 });
