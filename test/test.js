@@ -1,6 +1,6 @@
 var assert = require('assert');
 var { expect } = require('chai');
-var { greetingFactory, sumCalculator } = require('../src/closureFunctions.js');
+var { greetingFactory, sumCalculator, fastFoodRegisterFactory } = require('../src/closureFunctions.js');
 
 describe('Closures', function() {
   describe('#greetingFactory()', function() {
@@ -62,7 +62,7 @@ describe('Closures', function() {
       var testCalculator = sumCalculator(10);
 
       expect(testCalculator()).to.be.a('number');
-    })
+    });
 
     it('should account for the initialValue passed in', function() {
       var testCalculator = sumCalculator(10);
@@ -75,16 +75,18 @@ describe('Closures', function() {
       var testCalculator = sumCalculator();
 
       expect(testCalculator()).to.equal(0);
-    })
+    });
 
     it('should account for varying number of arguments', function() {
-      var testCalculator = sumCalculator(27);
+      var firstTestCalculator = sumCalculator(27);
 
-      expect(testCalculator(1)).to.equal(28);
+      expect(firstTestCalculator(1)).to.equal(28);
 
-      var testCalculator2 = sumCalculator(20);
+      var secondTestCalculator = sumCalculator(20);
 
-      expect(testCalculator2(1, 2, 3)).to.equal(26);
-    })
+      expect(secondTestCalculator(1, 2, 3)).to.equal(26);
+    });
   });
+
+  describe('#')
 });
