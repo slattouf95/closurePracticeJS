@@ -1,6 +1,8 @@
 // EXAMPLE
 
-// insert prompt here
+// greetingFactory takes in an initial string that is stored and returns a function.
+// The returned function should take in the name of the person to greet and return
+// a complete greeting in the form of "{greeting}, {person}"
 
 // var helloGreeting = greeting('Hello');
 // helloGreeting('Sam'); // 'Hello, Sam'
