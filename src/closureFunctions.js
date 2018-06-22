@@ -9,8 +9,16 @@
 // holaGreeting('Shi-Hao'); // 'Hola, Shi-Hao'
 
 var greetingFactory = function(greeting) {
-  // INSERT CODE HERE
+	var greet = greeting;
+	return function(string){
+		return greet + ' ' + string
+
+	}
+  
 }
+
+var helloGreeting = greetingFactory('Hello');
+ 
 
 // sumCalculator takes in an initial number that is stored and returns a function
 // that continues adding to the stored value. The function returned by
@@ -26,9 +34,28 @@ var greetingFactory = function(greeting) {
 // calculatorOne(1, 1, 4, 5) // 40
 // calculatorTwo() // 10
 
+
+
 var sumCalculator = function(initialValue) {
-  // INSERT CODE HERE
+  var value = initialValue;
+ 
+
+  return function(){
+  	
+  	if(arguments.length === 0){
+  		return value;
+  	}
+  	for( var i = 0; i < arguments.length; i ++){
+  		value += arguments[i]
+  	}  
+  	return value;	
+  };
 }
+var calculatorOne = sumCalculator(25);
+var calculatorTwo = sumCalculator(10);
+
+calculatorTwo();
+
 
 // coinFlipTally should generate a storage object, take no arguments, and 
 // return another object with two methods, makeCoinFlip and checkTally. The returned 
@@ -57,10 +84,36 @@ var sumCalculator = function(initialValue) {
 // gameTally.checkTally(); // should have updated count with heads added or tails added
 
 var coinFlipTally = function() {
+	var storage = {
+		heads: 0,
+		tails: 0
+	};
   // INSERT CODE HERE
 
+  return {
+  	makeCoinFlip : function(){
+  		var fitty =  Math.floor(Math.random() * Math.floor(2));
+  		console.log(fitty);
+  		
+  		if( fitty === 0){
+  			storage.heads ++;
+  			return 'heads';
+  		}else if( fitty === 1){
+  			storage.tails ++;
+  			return 'tails';
+  		}
+  	},
+  	checkTally : function(){
+  		return storage;
+  	}
+  }
 }
-
+ var gameTally = coinFlipTally();
+gameTally.makeCoinFlip();
+gameTally.makeCoinFlip();
+console.log(gameTally.checkTally());
+gameTally.makeCoinFlip();
+console.log(gameTally.checkTally());
 module.exports = {
   greetingFactory: greetingFactory,
   sumCalculator: sumCalculator,
